@@ -12,7 +12,7 @@ Just an example of how to use the `defmacro` package.
 ## Example
 
 The package exports a function called `analyze_dataset` with the
-following code:
+following code that defines its own pipe function.
 
 ``` r
 analyze_dataset <- function(data) {
@@ -25,7 +25,8 @@ analyze_dataset <- function(data) {
 }
 ```
 
-At runtime, the code gets replaced by this through the use of macros:
+During package load, the code gets replaced by the expanded version of
+the macro. This means the function does not have any runtime overhead.
 
 ``` r
 defmacroex::analyze_dataset
