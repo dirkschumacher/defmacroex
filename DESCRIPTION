@@ -19,3 +19,5 @@ Collate:
     'macros.R'
     'pipe.R'
     'zzz.R'
+URL: https://github.com/dirkschumacher/defmacroex
+BugReports: https://github.com/dirkschumacher/defmacroex/issues
