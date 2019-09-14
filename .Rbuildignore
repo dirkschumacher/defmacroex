@@ -1,0 +1,6 @@
+^defmacroex\.Rproj$
+^\.Rproj\.user$
+^R/macro
+^R/src
+^README\.Rmd$
+^LICENSE\.md$

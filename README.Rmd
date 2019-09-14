@@ -1,0 +1,43 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# defmacroex
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Just an example of how to use the `defmacro` package.
+
+## Example
+
+The package exports a function called `analyze_dataset` with the following code:
+
+```{r, eval=FALSE}
+analyze_dataset <- function(data) {
+  pipe({
+    data
+    dplyr::filter(hp > constexpr(50 + 50 + qnorm(0.975)))
+    dplyr::group_by(cyl)
+    dplyr::summarise(dplyr::n())
+  })
+}
+
+```
+
+At runtime, the code gets replaced by this through the use of macros:
+
+```{r}
+defmacroex::analyze_dataset
+```
+
