@@ -15,3 +15,9 @@ log <- defmacro::defmacro(function(msg) {
     return(bquote(message(.(msg))))
   }
 })
+
+assert <- defmacro::defmacro(function(msg, assertion_code) {
+  if (isTRUE(Sys.getenv("ASSERT") == "1")) {
+    return(assertion_code)
+  }
+})

@@ -9,7 +9,8 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-Just an example of how to use the `defmacro` package.
+Just an example of how to use the
+[`defmacro`](https://github.com/dirkschumacher/defmacro) package.
 
 ## Example
 
@@ -20,6 +21,8 @@ logging macro.
 ``` r
 analyze_dataset <- function(data) {
   log("Computing result")
+  assert("is a data frame", stopifnot(is.data.frame(data)))
+  assert("has right columns", stopifnot(c("hp", "cyl") %in% colnames(data)))
   result <- pipe({
     data
     dplyr::filter(hp > constexpr(50 + 50 + qnorm(0.975)))
@@ -50,12 +53,14 @@ would have been added to the function:
 
 ``` r
 unloadNamespace("defmacroex")
-withr::with_envvar(c("LOGGING" = "1"), {
+withr::with_envvar(c("LOGGING" = "1", "ASSERT" = "1"), {
   defmacroex::analyze_dataset
 })
 #> function (data) 
 #> {
 #>     message("Computing result")
+#>     stopifnot(is.data.frame(data))
+#>     stopifnot(c("hp", "cyl") %in% colnames(data))
 #>     result <- dplyr::summarise(dplyr::group_by(dplyr::filter(data, 
 #>         hp > 101.95996398454), cyl), dplyr::n())
 #>     message("Returning result")
