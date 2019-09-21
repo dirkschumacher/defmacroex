@@ -9,3 +9,9 @@ pipe <- defmacro::defmacro(function(expr) {
 constexpr <- defmacro::defmacro(function(expr) {
   eval(expr)
 })
+
+log <- defmacro::defmacro(function(msg) {
+  if (isTRUE(Sys.getenv("LOGGING") == "1")) {
+    return(bquote(message(.(msg))))
+  }
+})
