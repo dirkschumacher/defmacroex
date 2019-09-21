@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 # defmacroex
 
 <!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 Just an example of how to use the `defmacro` package.
