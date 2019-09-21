@@ -17,7 +17,7 @@ logging macro.
 
 ``` r
 analyze_dataset <- function(data) {
-  log("Entering pipe")
+  log("Computing result")
   result <- pipe({
     data
     dplyr::filter(hp > constexpr(50 + 50 + qnorm(0.975)))

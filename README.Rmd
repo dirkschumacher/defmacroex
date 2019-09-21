@@ -25,7 +25,7 @@ The package exports a function called `analyze_dataset` with the following code 
 
 ```{r, eval=FALSE}
 analyze_dataset <- function(data) {
-  log("Entering pipe")
+  log("Computing result")
   result <- pipe({
     data
     dplyr::filter(hp > constexpr(50 + 50 + qnorm(0.975)))
