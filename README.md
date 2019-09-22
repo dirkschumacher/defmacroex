@@ -23,12 +23,10 @@ analyze_dataset <- function(data) {
   log("Computing result")
   assert("is a data frame", stopifnot(is.data.frame(data)))
   assert("has right columns", stopifnot(c("hp", "cyl") %in% colnames(data)))
-  result <- pipe({
-    data
-    dplyr::filter(hp > constexpr(50 + 50 + qnorm(0.975)))
-    dplyr::group_by(cyl)
+  result <- data %>%
+    dplyr::filter(hp > fun2(constexpr(50 + 50 + qnorm(0.975)))) %>%
+    dplyr::group_by(cyl) %>%
     dplyr::summarise(dplyr::n())
-  })
   log("Returning result")
   result
 }
@@ -42,7 +40,7 @@ defmacroex::analyze_dataset
 #> function (data) 
 #> {
 #>     result <- dplyr::summarise(dplyr::group_by(dplyr::filter(data, 
-#>         hp > 101.95996398454), cyl), dplyr::n())
+#>         hp > fun2(101.95996398454)), cyl), dplyr::n())
 #>     result
 #> }
 #> <environment: namespace:defmacroex>
@@ -62,7 +60,7 @@ withr::with_envvar(c("LOGGING" = "1", "ASSERT" = "1"), {
 #>     stopifnot(is.data.frame(data))
 #>     stopifnot(c("hp", "cyl") %in% colnames(data))
 #>     result <- dplyr::summarise(dplyr::group_by(dplyr::filter(data, 
-#>         hp > 101.95996398454), cyl), dplyr::n())
+#>         hp > fun2(101.95996398454)), cyl), dplyr::n())
 #>     message("Returning result")
 #>     result
 #> }
