@@ -40,7 +40,7 @@ defmacroex::analyze_dataset
 #> function (data) 
 #> {
 #>     result <- dplyr::summarise(dplyr::group_by(dplyr::filter(data, 
-#>         hp > fun2(101.95996398454)), cyl), dplyr::n())
+#>         hp > 101.95996398454), cyl), dplyr::n())
 #>     result
 #> }
 #> <environment: namespace:defmacroex>
@@ -60,7 +60,7 @@ withr::with_envvar(c("LOGGING" = "1", "ASSERT" = "1"), {
 #>     stopifnot(is.data.frame(data))
 #>     stopifnot(c("hp", "cyl") %in% colnames(data))
 #>     result <- dplyr::summarise(dplyr::group_by(dplyr::filter(data, 
-#>         hp > fun2(101.95996398454)), cyl), dplyr::n())
+#>         hp > 101.95996398454), cyl), dplyr::n())
 #>     message("Returning result")
 #>     result
 #> }
