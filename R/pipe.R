@@ -1,6 +1,3 @@
-#' @include macros.R
-some_constant <- constexpr(qnorm(0.975))
-
 #' Analyze a dataset
 #'
 #' @param data the dataset
