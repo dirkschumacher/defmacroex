@@ -43,7 +43,7 @@ defmacroex::analyze_dataset
 #>         hp > 101.95996398454), cyl), dplyr::n())
 #>     result
 #> }
-#> <bytecode: 0x7ff95004b5f0>
+#> <bytecode: 0x7fc16f83fe70>
 #> <environment: namespace:defmacroex>
 ```
 
@@ -65,6 +65,6 @@ withr::with_envvar(c("LOGGING" = "1", "ASSERT" = "1"), {
 #>     message("Returning result")
 #>     result
 #> }
-#> <bytecode: 0x7ff94f361420>
+#> <bytecode: 0x7fc16eaa42f8>
 #> <environment: namespace:defmacroex>
 ```
